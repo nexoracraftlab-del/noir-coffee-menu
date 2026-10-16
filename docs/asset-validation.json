@@ -1,0 +1,13 @@
+{
+  "assets": 35,
+  "webp": 29,
+  "allAssetsHttp200AndByteMatch": true,
+  "imageDecodeVerification": true,
+  "qrPngAndSvgGeneration": true,
+  "qrInvalidInputRejected": true,
+  "physicalPhoneQrTest": false,
+  "jsBytes": 252916,
+  "cssBytes": 19744,
+  "totalDistBytes": 1553166,
+  "cv2Available": false
+}
