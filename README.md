@@ -113,7 +113,7 @@ Once the final URL exists:
 pnpm qr https://YOUR-APPROVED-FINAL-URL/
 ```
 
-The script writes `docs/qr.svg` and `docs/qr.png` with a four-module quiet zone. Test the final code using an actual phone before printing. No fake public URL or printable production QR is included.
+The script writes `docs/qr.svg` and `docs/qr.png` with a four-module quiet zone. Test the final code using an actual phone before printing. The production QR is included as [PNG](docs/qr.png) and [SVG](docs/qr.svg). It opens `https://nexoracraftlab-del.github.io/noir-coffee-menu/#menu` directly in the menu section. See [the QR guide](docs/QR.md).
 
 ## Credits & usage
 
