@@ -1,0 +1,14 @@
+{
+  "url": "https://nexoracraftlab-del.github.io/noir-coffee-menu/",
+  "qrDestination": "https://nexoracraftlab-del.github.io/noir-coffee-menu/#menu",
+  "workflowRun": 38870614014,
+  "buildCommit": "515317bee346658f7dfcffad21a67085708e988e",
+  "workflowConclusion": "success",
+  "publicFilesChecked": 32,
+  "productionBundleFiles": [
+    "./assets/index-psHhTSnB.js",
+    "./assets/index-DMP6lhDv.css"
+  ],
+  "allPublicAssetsHttp200AndMatch": true,
+  "physicalPhoneScanTested": false
+}
