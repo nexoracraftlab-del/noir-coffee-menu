@@ -13,3 +13,5 @@
 @media(max-width:350px){.wrap{width:calc(100% - 28px)}h1{font-size:35px}.hero-visual{height:260px}.product-grid{gap:22px 11px}.product-body h3{font-size:14px}.detail-label{font-size:8px}.price{font-size:14px}.menu-heading h2{font-size:25px}.category-scroll{margin-inline:-14px;padding-inline:14px;max-width:calc(100% + 28px)}.footer-demo p{display:block;margin-inline-start:0;margin-top:10px}.header-actions{gap:6px}}
 @keyframes sheet-in{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){html:root{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+.price-loading { min-height: 360px; display: grid; align-content: center; justify-items: center; gap: 12px; color: var(--muted, #75695d); text-align: center; }

@@ -3,6 +3,8 @@ name: Validate and deploy NOIR
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'public/menu-live.json'
   workflow_dispatch:
 
 permissions:
