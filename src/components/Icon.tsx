@@ -1,5 +1,6 @@
-export function Icon({ name, size = 20 }: { name: 'arrow' | 'search' | 'close' | 'info' | 'cup' | 'sun' | 'clock' | 'bean' | 'pin'; size?: number }) {
+export function Icon({ name, size = 20 }: { name: 'arrow' | 'search' | 'close' | 'info' | 'cup' | 'sun' | 'clock' | 'bean' | 'pin' | 'bot'; size?: number }) {
   const paths = {
+    bot: <><path d="M5 10a7 7 0 0 1 14 0v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2Z" fill="currentColor" stroke="none" /><rect x="8" y="9" width="8" height="6" rx="2" fill="var(--paper, #f7f3ec)" stroke="none" /><path d="M2 12v5M22 12v5" strokeWidth="2.5" /></>,
     pin: <><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z" /><circle cx="12" cy="10" r="2.5" /></>,
     arrow: <><path d="M18 6 6 18M6 7v11h11" /></>,
     search: <><circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 5 5" /></>,
