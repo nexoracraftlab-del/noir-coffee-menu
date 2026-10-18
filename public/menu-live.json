@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "revision": "29e2020803c424ad",
+  "revision": "4eee820a76f6d902",
   "products": [
     {
       "id": "hot-01",
@@ -94,7 +94,7 @@
     },
     {
       "id": "tea-02",
-      "price": 100000,
+      "price": 67000,
       "available": true
     },
     {
