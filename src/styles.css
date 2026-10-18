@@ -21,3 +21,25 @@
 .location-map{width:240px;height:240px;flex:0 0 240px;border:1px solid #b9aa9660;border-radius:16px;background:#e5e1d8}.location-bar{gap:28px}.location-links{min-width:180px}@media(max-width:600px){.location-map{width:min(100%,280px);height:auto;aspect-ratio:1;flex-basis:auto}.location-copy{flex-basis:100%}.location-links{padding-inline-start:0}}
 
 .location-preview{display:block;flex:0 0 240px}.location-preview .location-map{display:block;object-fit:cover}.location-preview:hover{opacity:.9}@media(max-width:600px){.location-preview{flex:0 0 240px}.location-preview .location-map{width:240px;height:240px}}
+
+/* Fluid desktop composition; explicit compact layout avoids accidental wrapping. */
+@media(min-width:601px){
+ .wrap{width:min(1240px,calc(100% - clamp(40px,6vw,96px)))}
+ .hero{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(28px,4vw,62px);padding-block:clamp(36px,4vw,60px);min-height:0}
+ .hero-copy{min-width:0}.hero-copy h1{font-size:clamp(34px,4.1vw,64px)}
+ .hero-visual{height:clamp(350px,36vw,530px)}
+ .hero-actions{flex-wrap:nowrap;gap:12px}.hero .hero-actions .primary-button{white-space:nowrap;gap:16px;padding-inline:20px;min-height:52px}
+ .hero-footnote{margin-top:clamp(24px,3vw,43px)}
+ .location-bar{display:grid;grid-template-columns:240px minmax(0,1fr) auto;gap:28px}
+ .location-links{min-width:0}.location-copy{min-width:0}
+}
+@media(min-width:601px) and (max-width:900px){
+ .hero-copy>p{font-size:13px}.hero .hero-actions .primary-button{font-size:12px;gap:10px;padding-inline:14px}
+ .location-bar{grid-template-columns:200px minmax(0,1fr);gap:20px}
+ .location-preview{grid-row:1/3}.location-preview .location-map{width:200px;height:200px}.location-links{grid-column:2;align-self:start}
+ .header-inner{gap:16px}.header-nav{gap:16px;font-size:12px}
+}
+@media(min-width:601px) and (max-width:760px){
+ .hero{grid-template-columns:1fr;gap:30px}.hero-copy{max-width:560px}.hero-copy h1{font-size:42px}.hero-copy>p{font-size:14px;max-width:520px}
+ .hero-visual{height:360px;margin-inline:12px}.hero-visual>img{border-radius:140px 140px 4px 4px}.hero-actions{flex-wrap:wrap}.header-nav{display:none}.header-inner{grid-template-columns:1fr auto}
+}
