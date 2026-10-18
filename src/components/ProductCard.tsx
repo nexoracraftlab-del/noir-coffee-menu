@@ -1,19 +1,17 @@
+import { useState, useId } from 'react';
 import { copy } from '../copy';
 import { number } from '../menu';
 import type { Language, Product } from '../types';
-import { Icon } from './Icon';
+
 import { MenuImage } from './MenuImage';
-export function ProductCard({ product: p, lang, onOpen }: { product: Product; lang: Language; onOpen: (p: Product) => void }) {
-  const t = copy[lang]; const name = lang === 'fa' ? p.nameFa : p.nameEn;
-  return <article className={`product-card ${p.available ? '' : 'is-unavailable'}`}>
-    <button className="product-open" onClick={() => onOpen(p)} aria-label={`${t.details}: ${name}`} aria-haspopup="dialog">
-      <div className="product-photo"><MenuImage image={p.image} alt={name} />
-        {(!p.available || p.featured || p.tags.includes('new')) && <span className={`badge ${!p.available ? 'muted' : ''}`}>{!p.available ? t.unavailable : p.tags.includes('new') ? t.new : t.special}</span>}
-        <span className="photo-arrow"><Icon name="arrow" /></span>
-      </div>
-      <div className="product-body"><span className="product-en" lang="en" dir="ltr">{p.nameEn}</span><h3>{name}</h3><p>{lang === 'fa' ? p.descriptionFa : p.descriptionEn}</p>
-        <div className="product-bottom"><span className="price">{number(p.price, lang)} <small>{t.toman}</small></span><span className="detail-label">{t.details}<Icon name="arrow" size={14} /></span></div>
-      </div>
-    </button>
-  </article>;
+export function ProductCard({ product: p, lang }: { product: Product; lang: Language; onOpen: (p: Product) => void }) {
+ const [open,setOpen]=useState(false);const id=useId();const t=copy[lang];const name=lang==='fa'?p.nameFa:p.nameEn;
+ return <article className={`product-card fold-card ${open?'expanded':''} ${p.available?'':'is-unavailable'}`}>
+  <button className="fold-trigger" onClick={()=>setOpen(!open)} aria-expanded={open} aria-controls={id} aria-label={`${t.details}: ${name}`}>
+   <div className="product-photo"><MenuImage image={p.image} alt={name}/><div className="fold-caption"><h3>{name}</h3><span className="price">{number(p.price,lang)} <small>{t.toman}</small></span></div>{!p.available&&<span className="badge muted">{t.unavailable}</span>}</div>
+   <span className="fold-handle"><span>{open?t.close:t.details}</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+  </button>
+  <div id={id} className="fold-region" inert={!open} aria-hidden={!open}><div className="fold-clip"><div className="fold-content"><p>{lang==='fa'?p.descriptionFa:p.descriptionEn}</p><div className="fold-ingredients"><h4>{t.ingredients}</h4><p>{lang==='fa'?p.ingredientsFa:p.ingredientsEn}</p></div><p className={`availability ${p.available?'':'off'}`}><span/>{p.available?t.available:t.unavailable}</p><p className="fold-note">{t.detailNote}</p></div></div></div>
+ </article>;
 }
+
