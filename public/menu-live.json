@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "revision": "088dd439c550de01",
+  "revision": "9669cd13c013dc4a",
   "products": [
     {
       "id": "hot-01",
@@ -19,7 +19,7 @@
     },
     {
       "id": "dessert-04",
-      "price": 110000,
+      "price": 150000,
       "available": true
     },
     {
