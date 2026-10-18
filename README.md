@@ -120,3 +120,9 @@ The script writes `docs/qr.svg` and `docs/qr.png` with a four-module quiet zone.
 Designed & Developed by [Nexora](https://nexoracraftlab-del.github.io/nexora-website/).
 
 Source code/design copyright Nexora. No open-source license for the application source is granted in this delivery. Photographs remain subject to the [Pexels License](https://www.pexels.com/license/); Vazirmatn is licensed under SIL OFL 1.1. See `docs/ASSETS.md` and the included font license.
+
+## Menu price synchronization — 2026-10-18
+
+The app reads public/menu-live.json on opening, tab focus and every 30 seconds. It accepts only validated price/availability overrides for the full known catalogue. Open product details update with the cards. Failed requests retain the last available data and show a retry notice.
+
+The Telegram bot lives separately in outputs/nexora-menu-bot and publishes the public file from its confirmed SQLite records, using a dedicated Git checkout and an authorized credential. Pages deployment can take several minutes after push. No Telegram token, admin identity or database is shipped to the browser. This is not a web admin panel or always-on hosted backend. Current release is prepared locally; public deployment is awaiting write access to nexoracraftlab-del/noir-coffee-menu.

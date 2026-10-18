@@ -1,0 +1,145 @@
+{
+  "schema": 1,
+  "products": [
+    {
+      "id": "hot-01",
+      "price": 147500,
+      "available": true
+    },
+    {
+      "id": "cold-01",
+      "price": 155000,
+      "available": true
+    },
+    {
+      "id": "dessert-01",
+      "price": 195000,
+      "available": true
+    },
+    {
+      "id": "dessert-04",
+      "price": 110000,
+      "available": true
+    },
+    {
+      "id": "hot-02",
+      "price": 95000,
+      "available": true
+    },
+    {
+      "id": "hot-03",
+      "price": 135000,
+      "available": true
+    },
+    {
+      "id": "hot-04",
+      "price": 110000,
+      "available": true
+    },
+    {
+      "id": "hot-05",
+      "price": 150000,
+      "available": true
+    },
+    {
+      "id": "hot-06",
+      "price": 165000,
+      "available": true
+    },
+    {
+      "id": "cold-02",
+      "price": 160000,
+      "available": false
+    },
+    {
+      "id": "cold-03",
+      "price": 120000,
+      "available": true
+    },
+    {
+      "id": "cold-04",
+      "price": 175000,
+      "available": true
+    },
+    {
+      "id": "cold-05",
+      "price": 180000,
+      "available": true
+    },
+    {
+      "id": "signature-01",
+      "price": 185000,
+      "available": true
+    },
+    {
+      "id": "signature-02",
+      "price": 190000,
+      "available": true
+    },
+    {
+      "id": "signature-03",
+      "price": 195000,
+      "available": false
+    },
+    {
+      "id": "signature-04",
+      "price": 185000,
+      "available": true
+    },
+    {
+      "id": "tea-01",
+      "price": 85000,
+      "available": true
+    },
+    {
+      "id": "tea-02",
+      "price": 100000,
+      "available": true
+    },
+    {
+      "id": "tea-03",
+      "price": 115000,
+      "available": true
+    },
+    {
+      "id": "tea-04",
+      "price": 120000,
+      "available": true
+    },
+    {
+      "id": "dessert-02",
+      "price": 175000,
+      "available": true
+    },
+    {
+      "id": "dessert-03",
+      "price": 185000,
+      "available": false
+    },
+    {
+      "id": "dessert-05",
+      "price": 135000,
+      "available": true
+    },
+    {
+      "id": "breakfast-01",
+      "price": 265000,
+      "available": true
+    },
+    {
+      "id": "breakfast-02",
+      "price": 310000,
+      "available": true
+    },
+    {
+      "id": "breakfast-03",
+      "price": 175000,
+      "available": true
+    },
+    {
+      "id": "breakfast-04",
+      "price": 235000,
+      "available": true
+    }
+  ]
+}

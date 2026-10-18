@@ -7,15 +7,41 @@ import { Icon } from './components/Icon';
 import { ProductCard } from './components/ProductCard';
 import { MenuImage } from './components/MenuImage';
 import { Modal } from './components/Modal';
-const products: Product[] = data as Product[];
+import { applyLiveMenu } from './live-menu';
+const catalogue: Product[] = data as Product[];
 export default function App() {
+  const [products, setProducts] = useState<Product[]>(catalogue);
+  const [syncFailed, setSyncFailed] = useState(false);
   const [lang, setLang] = useState<Language>(() => { try { return localStorage.getItem('noir-language') === 'en' ? 'en' : 'fa'; } catch { return 'fa'; } });
   const [category, setCategory] = useState('all');
   const [query, setQuery] = useState('');
-  const [selected, setSelected] = useState<Product | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const selected = products.find(p => p.id === selectedId) ?? null;
+  const setSelected = (product: Product | null) => setSelectedId(product?.id ?? null);
   const [infoOpen, setInfoOpen] = useState(false);
   const t = copy[lang];
-  const visible = useMemo(() => filterProducts(products, category, query), [category, query]);
+  const visible = useMemo(() => filterProducts(products, category, query), [products, category, query]);
+  useEffect(() => {
+    let disposed = false, busy = false;
+    const controller = new AbortController();
+    async function refresh() {
+      if (busy || document.hidden) return;
+      busy = true;
+      try {
+        const response = await fetch(`${import.meta.env.BASE_URL}menu-live.json?t=${Date.now()}`, { cache: 'no-store', signal: AbortSignal.any([controller.signal, AbortSignal.timeout(10000)]) });
+        if (!response.ok) throw Error('Menu unavailable');
+        const next = applyLiveMenu(catalogue, await response.json());
+        if (!disposed) { setProducts(next); setSyncFailed(false); }
+      } catch { if (!disposed) setSyncFailed(true); }
+      finally { busy = false; }
+    }
+    void refresh();
+    const timer = window.setInterval(() => void refresh(), 30000);
+    const onFocus = () => void refresh();
+    window.addEventListener('focus', onFocus);
+    document.addEventListener('visibilitychange', onFocus);
+    return () => { disposed = true; controller.abort(); clearInterval(timer); window.removeEventListener('focus', onFocus); document.removeEventListener('visibilitychange', onFocus); };
+  }, []);
   useEffect(() => {
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'fa' ? 'rtl' : 'ltr';
@@ -37,6 +63,7 @@ export default function App() {
       </section>
       <div className="demo-note wrap"><span className="demo-dot" />{t.note}</div>
       <section className="menu-section wrap" id="menu" aria-labelledby="menu-title">
+        {syncFailed && <p role="status">{lang === 'fa' ? 'دریافت قیمت تازه ممکن نشد؛ آخرین اطلاعات موجود نمایش داده می‌شود. دوباره تلاش می‌کنیم.' : 'Could not refresh prices. Showing the last available menu; retrying shortly.'}</p>}
         <div className="menu-heading"><div><span className="eyebrow">{t.menuEyebrow}</span><h2 id="menu-title">{t.menuTitle}</h2><p>{t.menuIntro}</p></div><div className="menu-edition" lang="en" dir="ltr"><Icon name="cup" size={28} /><span>THE MENU<br /><b>NOIR / 01</b></span></div></div>
         <div className="menu-tools"><div className="category-scroll" role="group" aria-label={t.categories}>{categories.map(c => <button key={c.id} aria-pressed={category === c.id} className={`category ${category === c.id ? 'active' : ''}`} onClick={e => { setCategory(c.id); e.currentTarget.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' }); }}>{c[lang]}</button>)}</div>
           <div className="search-row"><div className="search"><Icon name="search" /><label className="sr-only" htmlFor="menu-search">{t.search}</label><input id="menu-search" type="search" value={query} onChange={e => setQuery(e.target.value)} placeholder={t.placeholder} maxLength={100} />{query && <button className="clear-search icon-button" onClick={() => setQuery('')} aria-label={t.clear}><Icon name="close" size={17} /></button>}</div><p className="result-count" role="status" aria-live="polite" aria-atomic="true"><strong>{number(visible.length, lang)}</strong> {t.count}</p></div>
