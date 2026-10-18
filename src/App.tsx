@@ -38,7 +38,7 @@ export default function App() {
       finally { busy = false; }
     }
     void refresh();
-    const timer = window.setInterval(() => void refresh(), 10000);
+    const timer = window.setInterval(() => void refresh(), 3000);
     const onFocus = () => void refresh();
     window.addEventListener('focus', onFocus);
     document.addEventListener('visibilitychange', onFocus);
