@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "revision": "0f4eb2f15341d516",
+  "revision": "29e2020803c424ad",
   "products": [
     {
       "id": "hot-01",
@@ -44,7 +44,7 @@
     },
     {
       "id": "hot-06",
-      "price": 165000,
+      "price": 175000,
       "available": true
     },
     {
