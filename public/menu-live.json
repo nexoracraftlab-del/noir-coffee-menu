@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "revision": "4eee820a76f6d902",
+  "revision": "088dd439c550de01",
   "products": [
     {
       "id": "hot-01",
@@ -124,7 +124,7 @@
     },
     {
       "id": "breakfast-01",
-      "price": 265000,
+      "price": 285000,
       "available": true
     },
     {
